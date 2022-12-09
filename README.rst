@@ -41,16 +41,16 @@ You can install "pytest-slow-last" via `pip`_ from `PyPI`_::
 Usage
 -----
 
-```python
-pytest --slow-last
-```
+
+    $ pytest --slow-last
+
 
 Or in pytest.ini:
 
-```ini
-[pytest]
-addopts = --slow-last
-```
+.. code-block:: ini
+    [pytest]
+    addopts = --slow-last
+
 
 Contributing
 ------------
