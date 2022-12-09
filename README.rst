@@ -16,21 +16,18 @@ pytest-slow-last
 
 Run tests in order of execution time (faster tests first)
 
-----
-
-This `pytest`_ plugin was generated with `Cookiecutter`_ along with `@hackebrot`_'s `cookiecutter-pytest-plugin`_ template.
-
-
 Features
 --------
 
-* TODO
+* Allows to run tests in order of the execution time of the last run (faster tests first, new tests even before).
+* -ff option has preference: if a test fails, it will be run first.
 
 
 Requirements
 ------------
 
-* TODO
+* Python >= 3.5
+* pytest >= 3.5
 
 
 Installation
@@ -44,7 +41,16 @@ You can install "pytest-slow-last" via `pip`_ from `PyPI`_::
 Usage
 -----
 
-* TODO
+```python
+pytest --slow-last
+```
+
+Or in pytest.ini:
+
+```ini
+[pytest]
+addopts = --slow-last
+```
 
 Contributing
 ------------
@@ -74,3 +80,7 @@ If you encounter any problems, please `file an issue`_ along with a detailed des
 .. _`tox`: https://tox.readthedocs.io/en/latest/
 .. _`pip`: https://pypi.org/project/pip/
 .. _`PyPI`: https://pypi.org/project
+
+----
+
+This `pytest`_ plugin was generated with `Cookiecutter`_ along with `@hackebrot`_'s `cookiecutter-pytest-plugin`_ template.
