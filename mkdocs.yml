@@ -1,0 +1,10 @@
+site_name: pytest-slow-last
+site_description: Run tests in order of execution time (faster tests first)
+site_author: David Masip Bonet
+
+theme: readthedocs
+
+repo_url: https://github.com/david26694/pytest-slow-last
+
+pages:
+- Home: index.md
