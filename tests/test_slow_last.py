@@ -3,34 +3,6 @@
 import pytest
 
 
-def test_pass_fail(testdir):
-
-    # Create a temporary pytest test module.
-    testdir.makepyfile(
-        """
-        def test_pass():
-            assert 1 == 1
-
-        def test_fail():
-            assert 1 == 2
-    """
-    )
-
-    # Run pytest. Return value is of type RunResult.
-    result = testdir.runpytest()
-
-    print(result.stdout)
-    # fnmatch_lines does an assertion internally. Strings can include glob wildcards.
-    result.stdout.fnmatch_lines(
-        [
-            "*.F*",
-        ]  # . for Pass, F for Fail
-    )
-
-    # Make sure that that we get a '1' exit code for the testsuite.
-    assert result.ret == 1
-
-
 @pytest.fixture()
 def sample_test(testdir):
     testdir.makepyfile(
@@ -84,7 +56,6 @@ def test_help_message(testdir):
     result = testdir.runpytest(
         "--help",
     )
-    print(result.stdout)
     # fnmatch_lines does an assertion internally
     result.stdout.fnmatch_lines(
         [
