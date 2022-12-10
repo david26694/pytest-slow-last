@@ -10,33 +10,7 @@ pytest-slow-last
     :target: https://pypi.org/project/pytest-slow-last
     :alt: Python versions
 
-.. image:: https://ci.appveyor.com/api/projects/status/github/david26694/pytest-slow-last?branch=master
-    :target: https://ci.appveyor.com/project/david26694/pytest-slow-last/branch/master
-    :alt: See Build Status on AppVeyor
-
 Run tests in order of execution time (faster tests first)
-
-Features
---------
-
-* Allows to run tests in order of the execution time of the last run (faster tests first, new tests even before).
-* -ff option has preference: if a test fails, it will be run first.
-
-
-Requirements
-------------
-
-* Python >= 3.5
-* pytest >= 3.5
-
-
-Installation
-------------
-
-You can install "pytest-slow-last" via `pip`_ from `PyPI`_::
-
-    $ pip install pytest-slow-last
-
 
 Usage
 -----
@@ -51,6 +25,27 @@ Or in pytest.ini::
 
     [pytest]
     addopts = --slow-last
+
+Installation
+------------
+
+You can install "pytest-slow-last" via `pip`_ from `PyPI`_::
+
+    $ pip install pytest-slow-last
+
+
+Features
+--------
+
+* Allows to run tests in order of the execution time of the last run (faster tests first, new tests even before).
+* -ff option has preference: if a test fails, it will be run first.
+
+
+Requirements
+------------
+
+* Python >= 3.5
+* pytest >= 3.5
 
 
 Contributing
