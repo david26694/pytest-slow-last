@@ -39,7 +39,7 @@ Features
 
 * Allows to run tests in order of the execution time of the last run (faster tests first, new tests even before).
 * -ff option has preference: if a test fails, it will be run first.
-
+* By default, test durations are rounded to the 2nd decimal digit: this way, tests which are "more or less of the same speed" are kept in the original order. Use `--slow-last-rounding` to change that, and set it to -1 to disable.
 
 Requirements
 ------------
