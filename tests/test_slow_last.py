@@ -2,6 +2,7 @@
 
 import pytest
 
+# add a test for the --slow-last-rounding option. AI!
 
 @pytest.fixture()
 def sample_test(testdir):
