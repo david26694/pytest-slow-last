@@ -28,7 +28,12 @@ def check_duration(request, duration_cache):
 
 def by_duration(item):
     """Get the duration of a test from the cache"""
-    return item.config.cache.get("duration/testdurations", {}).get(item.nodeid, 0)
+    d = item.config.cache.get("duration/testdurations", {}).get(item.nodeid, 0)
+    rounding = item.config.getoption("--slow-last-rounding")
+    if rounding >= 0:
+        return round(d, rounding)
+    else:
+        return d
 
 
 def pytest_addoption(parser):
@@ -38,7 +43,13 @@ def pytest_addoption(parser):
         default=False,
         help="Run slowest tests last",
     )
-
+    parser.addoption(
+        "--slow-last-rounding",
+        action="store",
+        default=2,
+        type=int,
+        help="Number of decimal places to round test durations",
+    )
 
 def pytest_collection_modifyitems(items, config):
     """Sort tests by duration"""

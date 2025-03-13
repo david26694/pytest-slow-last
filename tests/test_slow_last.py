@@ -2,8 +2,6 @@
 
 import pytest
 
-# add a test for the --slow-last-rounding option. AI!
-
 @pytest.fixture()
 def sample_test(testdir):
     testdir.makepyfile(
@@ -96,4 +94,45 @@ def test_hello_ini_setting(testdir):
     )
 
     # make sure that that we get a '0' exit code for the testsuite
+    assert result.ret == 0
+
+
+def test_slow_last_rounding(testdir):
+    """Test the --slow-last-rounding option."""
+    testdir.makepyfile(
+        """
+        from time import sleep
+        def test_a():
+            sleep(0.051)  # Just above threshold with default rounding
+
+        def test_b():
+            sleep(0.049)  # Just below threshold with default rounding
+
+        def test_c():
+            sleep(0.001)  # Definitely fast
+    """
+    )
+
+    # First run to cache durations
+    testdir.runpytest("")
+
+    result = testdir.runpytest("--slow-last", "-v")
+    result.stdout.fnmatch_lines(
+        [
+            "*::test_c PASSED*",
+            "*::test_a PASSED*",
+            "*::test_b PASSED*",
+        ]
+    )
+    assert result.ret == 0
+
+    # Run with custom rounding value
+    result = testdir.runpytest("--slow-last", "--slow-last-rounding=3", "-v")
+    result.stdout.fnmatch_lines(
+        [
+            "*::test_c PASSED*",
+            "*::test_b PASSED*",
+            "*::test_a PASSED*",
+        ]
+    )
     assert result.ret == 0
