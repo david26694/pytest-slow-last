@@ -33,7 +33,7 @@ dev_packages = test_packages + util_packages + docs_packages
 
 setup(
     name="pytest-slow-last",
-    version="0.2.0",
+    version="0.2.1",
     author="David Masip Bonet",
     author_email="david26694@gmail.com",
     maintainer="David Masip Bonet",
