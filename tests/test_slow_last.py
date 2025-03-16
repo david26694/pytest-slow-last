@@ -2,6 +2,7 @@
 
 import pytest
 
+
 @pytest.fixture()
 def sample_test(testdir):
     testdir.makepyfile(
@@ -103,7 +104,7 @@ def test_slow_last_rounding(testdir):
         """
         from time import sleep
         def test_a():
-            sleep(0.051)  # Just above threshold with default rounding
+            sleep(0.053)  # Just above threshold with default rounding
 
         def test_b():
             sleep(0.049)  # Just below threshold with default rounding
